@@ -1,0 +1,367 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable type="KIND_SpriteKind" id=".sO(]EqEO;U*6C@_JhR1">Player</variable><variable type="KIND_SpriteKind" id=";2HoA]a#+rZ3:SGH/+xI">Projectile</variable><variable type="KIND_SpriteKind" id="0nsl~sssF7H6;33T0*#~">Food</variable><variable type="KIND_SpriteKind" id="cwlpkQGoRhvJc,k$YVv1">Enemy</variable><variable id="36@k}E.*;@wk;/pm/BCz">mySprite</variable><variable id="+c3FuSl=mEW4:/13L`p-">direction</variable><variable id="P9*$GOoqa6(ap*%hIAFy">reloading</variable><variable id="h^],N9C!MLx1|Ej0E=O}">projectile</variable><variable id="R4HzPh%(vQgmHwMLSHuG">preparing</variable></variables><block type="pxt-on-start" x="20" y="0"><statement name="HANDLER"><block type="variables_set"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . f f f f f f . . . . . 
+. . . f f e e e e f 2 f . . . . 
+. . f f e e e e f 2 2 2 f . . . 
+. . f e e e f f e e e e f . . . 
+. . f f f f e e 2 2 2 2 e f . . 
+. . f e 2 2 2 f f f f e 2 f . . 
+. f f f f f f f e e e f f f . . 
+. f f e 4 4 e b f 4 4 e e f . . 
+. f e e 4 d 4 1 f d d e f . . . 
+. . f e e e e e d d d f . . . . 
+. . . . f 4 d d e 4 e f . . . . 
+. . . . f e d d e 2 2 f . . . . 
+. . . f f f e e f 5 5 f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . f f . . . f f f . . . . 
+`</field></shadow></value><value name="kind"><shadow type="spritekind"><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="variables_set"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field><value name="VALUE"><shadow type="math_number"><field name="NUM">1</field></shadow></value><next><block type="gamesetbackgroundimage"><value name="img"><shadow type="background_image_picker"><field name="img">img`
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 e 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b b c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c b b b b b 4 4 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 4 4 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 4 4 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 4 4 4 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 4 4 4 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 4 4 4 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 4 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 4 4 7 7 7 7 7 7 7 7 7 4 4 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 4 4 4 4 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 4 4 7 7 7 7 7 7 7 7 7 4 4 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 4 4 4 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 4 4 7 7 7 7 7 7 7 7 7 4 4 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 4 4 4 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 4 4 4 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c c b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c c b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c c b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c c b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c c b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c b b b b b c c c c b b b 
+c b b b b b c c c c c c b b b b b c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c c b b b b b c c c c b b b b b c c c c b b b 
+c b b b b b c c c c c c b b b b b c c c c c c b b b b b c c c c c c c b b b b b c c c c c c c b b b b b c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c c b b b b b c c c c b b b b b c c c c b b b 
+c b b b b b c c c c c c b b b b b c c c c c c b b b b b c c c c c c c b b b b b c c c c c c c b b b b b c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c c b b b b b c c c c b b b b b c c c c b b b 
+c b b b b b c c c c c c b b b b b c c c c c c b b b b b c c c c c c c b b b b b c c c c c c c b b b b b c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c b b b b b c c c c c c c c b b b b b c c c c c c c b b b b b c c c c b b b b b c c c c b b b 
+c b b b b b c c c c c c b b b b b c c c c c c b b b b b c c c c c c c b b b b b c c c c c c c b b b b b c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c b b b b b c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b c c c c c b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c b b b b b c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 b b b b b c c c c c c c c c c c c c c c c c c c c c c c c c c c c b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 6 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+`</field></shadow></value></block></next></block></next></block></statement></block><block type="gameupdate" x="0" y="260"><statement name="HANDLER"><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.x</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_set"><field name="property">Sprite.x@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><block type="scenescreenwidth"/></value></block></statement><statement name="ELSE"><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.x</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="scenescreenwidth"/></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_set"><field name="property">Sprite.x@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></statement><statement name="ELSE"><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.y</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_set"><field name="property">Sprite.y@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><block type="scenescreenheight"/></value></block></statement><statement name="ELSE"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="Sprite_blockCombine_get"><field name="property">Sprite.y</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="scenescreenheight"/></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_set"><field name="property">Sprite.y@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></statement></block></statement></block></statement></block></statement></block></statement></block><block type="gameupdate" x="620" y="260"><statement name="HANDLER"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.left</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_change"><field name="property">Sprite.x@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">-1</field></shadow></value><next><block type="variables_set"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></next></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.right</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_change"><field name="property">Sprite.x@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">1</field></shadow></value><next><block type="variables_set"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field><value name="VALUE"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></next></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.up</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_change"><field name="property">Sprite.y@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">-1</field></shadow></value><next><block type="variables_set"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field><value name="VALUE"><shadow type="math_number"><field name="NUM">2</field></shadow></value></block></next></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.down</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="Sprite_blockCombine_change"><field name="property">Sprite.y@set</field><value name="mySprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="value"><shadow type="math_number"><field name="NUM">1</field></shadow></value><next><block type="variables_set"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field><value name="VALUE"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block></next></block></statement></block></next></block></next></block></next></block></statement></block><block type="gameupdate" x="1410" y="250"><statement name="HANDLER"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.left</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . f f f f f f . . . . . . 
+. . . f 2 f e e e e f f . . . . 
+. . f 2 2 2 f e e e e f f . . . 
+. . f e e e e f f e e e f . . . 
+. f e 2 2 2 2 e e f f f f . . . 
+. f 2 e f f f f 2 2 2 e f . . . 
+. f f f e e e f f f f f f f . . 
+. f e e 4 4 f b e 4 4 e f f . . 
+. . f e d d f 1 4 d 4 e e f . . 
+. . . f d d d e e e e e f . . . 
+. . . f e 4 e d d 4 f . . . . . 
+. . . f 2 2 e d d e f . . . . . 
+. . f f 5 5 f e e f f f . . . . 
+. . f f f f f f f f f f . . . . 
+. . . f f f . . . f f . . . . . 
+`</field></shadow></value></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.right</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . f f f f f f . . . . . 
+. . . f f e e e e f 2 f . . . . 
+. . f f e e e e f 2 2 2 f . . . 
+. . f e e e f f e e e e f . . . 
+. . f f f f e e 2 2 2 2 e f . . 
+. . f e 2 2 2 f f f f e 2 f . . 
+. f f f f f f f e e e f f f . . 
+. f f e 4 4 e b f 4 4 e e f . . 
+. f e e 4 d 4 1 f d d e f . . . 
+. . f e e e e e d d d f . . . . 
+. . . . f 4 d d e 4 e f . . . . 
+. . . . f e d d e 2 2 f . . . . 
+. . . f f f e e f 5 5 f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . f f . . . f f f . . . . 
+`</field></shadow></value></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.up</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . f f f f . . . . . . 
+. . . . f f e e e e f f . . . . 
+. . . f e e e f f e e e f . . . 
+. . f f f f f 2 2 f f f f f . . 
+. . f f e 2 e 2 2 e 2 e f f . . 
+. . f e 2 f 2 f f 2 f 2 e f . . 
+. . f f f 2 2 e e 2 2 f f f . . 
+. f f e f 2 f e e f 2 f e f f . 
+. f e e f f e e e e f e e e f . 
+. . f e e e e e e e e e e f . . 
+. . . f e e e e e e e e f . . . 
+. . e 4 f f f f f f f f 4 e . . 
+. . 4 d f 2 2 2 2 2 2 f d 4 . . 
+. . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
+. . . . . f f f f f f . . . . . 
+. . . . . f f . . f f . . . . . 
+`</field></shadow></value></block></statement><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_operation"><field name="OP">AND</field><value name="A"><block type="keyispressed"><field name="button">controller.down</field></block></value><value name="B"><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . f f f f . . . . . . 
+. . . . f f f 2 2 f f f . . . . 
+. . . f f f 2 2 2 2 f f f . . . 
+. . f f f e e e e e e f f f . . 
+. . f f e 2 2 2 2 2 2 e e f . . 
+. . f e 2 f f f f f f 2 e f . . 
+. . f f f f e e e e f f f f . . 
+. f f e f b f 4 4 f b f e f f . 
+. f e e 4 1 f d d f 1 4 e e f . 
+. . f e e d d d d d d e e f . . 
+. . . f e e 4 4 4 4 e e f . . . 
+. . e 4 f 2 2 2 2 2 2 f 4 e . . 
+. . 4 d f 2 2 2 2 2 2 f d 4 . . 
+. . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
+. . . . . f f f f f f . . . . . 
+. . . . . f f . . f f . . . . . 
+`</field></shadow></value></block></statement></block></next></block></next></block></next></block></statement></block><block type="gameupdate" x="0" y="1120"><statement name="HANDLER"><block type="variables_set"><field name="VAR" id="P9*$GOoqa6(ap*%hIAFy">reloading</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="math_arithmetic"><field name="OP">MINUS</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="P9*$GOoqa6(ap*%hIAFy">reloading</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed"><field name="button">controller.A</field></block></value><statement name="DO0"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="P9*$GOoqa6(ap*%hIAFy">reloading</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><statement name="DO0"><block type="mixer_play_sound"><field name="sound">music.pewPew</field><next><block type="variables_set"><field name="VAR" id="P9*$GOoqa6(ap*%hIAFy">reloading</field><value name="VALUE"><shadow type="math_number"><field name="NUM">30</field></shadow></value><next><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="h^],N9C!MLx1|Ej0E=O}">projectile</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . 4 4 4 5 5 4 4 4 . . . . 
+. . . 3 3 3 3 4 4 4 4 4 4 . . . 
+. . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+. . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
+. 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+. 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+. 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
+. . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
+. . . 4 2 2 2 2 2 2 2 2 4 . . . 
+. . . . 4 4 2 2 2 2 4 4 . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="sprite"><shadow type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">-90</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value></block></value></block></statement><statement name="ELSE"><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="h^],N9C!MLx1|Ej0E=O}">projectile</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . 4 4 4 5 5 4 4 4 . . . . 
+. . . 3 3 3 3 4 4 4 4 4 4 . . . 
+. . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+. . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
+. 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+. 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+. 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
+. . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
+. . . 4 2 2 2 2 2 2 2 2 4 . . . 
+. . . . 4 4 2 2 2 2 4 4 . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="sprite"><shadow type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">90</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value></block></value></block></statement><statement name="ELSE"><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">2</field></shadow></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="h^],N9C!MLx1|Ej0E=O}">projectile</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . 4 4 4 5 5 4 4 4 . . . . 
+. . . 3 3 3 3 4 4 4 4 4 4 . . . 
+. . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+. . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
+. 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+. 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+. 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
+. . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
+. . . 4 2 2 2 2 2 2 2 2 4 . . . 
+. . . . 4 4 2 2 2 2 4 4 . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="sprite"><shadow type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">-90</field></shadow></value></block></value></block></statement><statement name="ELSE"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block></value><statement name="DO0"><block type="variables_set"><field name="VAR" id="h^],N9C!MLx1|Ej0E=O}">projectile</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreateprojectilefromsprite"><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . 4 4 4 5 5 4 4 4 . . . . 
+. . . 3 3 3 3 4 4 4 4 4 4 . . . 
+. . 4 3 3 3 3 2 2 2 1 1 4 4 . . 
+. . 3 3 3 3 3 2 2 2 1 1 5 4 . . 
+. 4 3 3 3 3 2 2 2 2 2 5 5 4 4 . 
+. 4 3 3 3 2 2 2 4 4 4 4 5 4 4 . 
+. 4 4 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. 4 2 3 3 2 2 4 4 4 4 4 4 4 4 . 
+. . 4 2 3 3 2 4 4 4 4 4 2 4 . . 
+. . 4 2 2 3 2 2 4 4 4 2 4 4 . . 
+. . . 4 2 2 2 2 2 2 2 2 4 . . . 
+. . . . 4 4 2 2 2 2 4 4 . . . . 
+. . . . . . 4 4 4 4 . . . . . . 
+. . . . . . . . . . . . . . . . 
+`</field></shadow></value><value name="sprite"><shadow type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></shadow></value><value name="vx"><shadow type="spriteSpeedPicker"><field name="speed">0</field></shadow></value><value name="vy"><shadow type="spriteSpeedPicker"><field name="speed">90</field></shadow></value></block></value></block></statement></block></statement></block></statement></block></statement></block></next></block></next></block></statement></block></statement></block></next></block></statement></block><block type="gameupdate" x="950" y="1130"><statement name="HANDLER"><block type="variables_set"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="math_arithmetic"><field name="OP">MINUS</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><next><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="keyispressed"><field name="button">controller.B</field></block></value><statement name="DO0"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">LT</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><statement name="DO0"><block type="mixer_play_sound"><field name="sound">music.baDing</field><next><block type="variables_set"><field name="VAR" id="R4HzPh%(vQgmHwMLSHuG">preparing</field><value name="VALUE"><shadow type="math_number"><field name="NUM">15</field></shadow></value><next><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . f f . . . . . . . 
+. . . . . . . . . . . . . f f 2 f f f f . . . . 
+. . . . . . . . . . . . f f 2 f e e e e f f . . 
+. . . . . . . . . . . f f 2 2 f e e e e e f f . 
+. . . . . . . . . . . f e e e e f f e e e e f . 
+. . . . . . . . . . f e 2 2 2 2 e e f f f f f . 
+. . . . . . . . . . f 2 e f f f f 2 2 2 e f f f 
+. . . . . . . . . . f f f e e e f f f f f f f f 
+. . . . . . . . . . f e e 4 4 f b e 4 4 e f e f 
+. . . . . . . . . . . f e d d f b 4 d 4 e e f . 
+. . . . . . . . . . c . e e d d d 4 e e e f . . 
+. . . . c c c c c c c e d d e e 2 2 2 2 f . . . 
+. . . . . d d d d d c e d d 4 4 e 4 4 4 f . . . 
+. . . . . . c c c c c . e e e e f f f f f . . . 
+. . . . . . . . . . c . . . f f f f f f f f . . 
+. . . . . . . . . . . . . . . f f . . f f f . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+`</field></shadow></value></block></statement><statement name="ELSE"><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . f f . . . . . . . . . . . . . . . 
+. . . . f f f f 2 f f . . . . . . . . . . . . . 
+. . f f e e e e f 2 f f . . . . . . . . . . . . 
+. f f e e e e e f 2 2 f f . . . . . . . . . . . 
+. f e e e e f f e e e e f . . . . . . . . . . . 
+. f f f f f e e 2 2 2 2 e f . . . . . . . . . . 
+f f f e 2 2 2 f f f f e 2 f . . . . . . . . . . 
+f f f f f f f f e e e f f f . . . . . . . . . . 
+f e f e 4 4 e b f 4 4 e e f . . . . . . . . . . 
+. f e e 4 d 4 b f d d e f . . . . . . . . . . . 
+. . f e e e 4 d d d e e . c . . . . . . . . . . 
+. . . f 2 2 2 2 e e d d e c c c c c c c . . . . 
+. . . f 4 4 4 e 4 4 d d e c d d d d d . . . . . 
+. . . f f f f f e e e e . c c c c c . . . . . . 
+. . f f f f f f f f . . . c . . . . . . . . . . 
+. . f f f . . f f . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+`</field></shadow></value></block></statement><statement name="ELSE"><block type="controls_if"><mutation else="1"/><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">2</field></shadow></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . 
+. . . . . f f f f . . . . . . . 
+. . . f f e e e e f f . . . . . 
+. . f e e e f f e e e f . . . . 
+. . f f f f 2 2 f f f f . . . . 
+. f f e 2 e 2 2 e 2 e f f . . . 
+. f e 2 f 2 f f f 2 f e f . . . 
+. f f f 2 f e e 2 2 f f f . . . 
+. f e 2 f f e e 2 f e e f . . . 
+f f e f f e e e f e e e f f . . 
+f f e e e e e e e e e e f d f . 
+. . f e e e e e e e e f f b f . 
+. . e f f f f f f f f 4 f b f . 
+. . 4 f 2 2 2 2 2 e d d f c f . 
+. . e f f f f f f e e 4 f f . . 
+. . . f f f . . . . . . . . . . 
+`</field></shadow></value></block></statement><statement name="ELSE"><block type="controls_if"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="logic_compare"><field name="OP">EQ</field><value name="A"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="variables_get"><field name="VAR" id="+c3FuSl=mEW4:/13L`p-">direction</field></block></value><value name="B"><shadow type="math_number"><field name="NUM">3</field></shadow></value></block></value><statement name="DO0"><block type="spritesetimage"><value name="sprite"><block type="variables_get"><field name="VAR" id="36@k}E.*;@wk;/pm/BCz">mySprite</field></block></value><value name="img"><shadow type="screen_image_picker"><field name="img">img`
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . f f . . . . . . . . . . . . . . . 
+. . . . . f f 2 2 f f . . . . . . . . . . . . . 
+. . . f f f 2 2 2 2 f f f . . . . . . . . . . . 
+. . f f f 2 2 2 2 2 2 f f f . . . . . . . . . . 
+. . f f f 2 2 2 2 2 2 f f f . . . . . . . . . . 
+. . f e e e e e e e e e e f f . . . . . . . . . 
+. f f e 2 2 2 2 2 2 2 2 e f f . . . . . . . . . 
+. f f f f f e e e e f f f f f . . . . . . . . . 
+f d f e f b f 4 4 f b f e f f . . . . . . . . . 
+f b f e 4 1 f d d f 1 4 e f . . . . . . . . . . 
+f b f f e 4 d d d d 4 e f e . . . . . . . . . . 
+f c f e f 2 2 2 2 2 f 4 e . . . . . . . . . . . 
+. f f 4 f 4 4 5 5 4 f 4 e . . . . . . . . . . . 
+. . . . f f f f f f d d e . . . . . . . . . . . 
+. . . . . f f f f e d d e . . . . . . . . . . . 
+. . . . . . . . . . e e . . . . . . . . . . . . 
+. . . . . . . . . c c c . . . . . . . . . . . . 
+. . . . . . . . c c 1 c c . . . . . . . . . . . 
+. . . . . . . . . c 1 c . . . . . . . . . . . . 
+. . . . . . . . . c 1 c . . . . . . . . . . . . 
+. . . . . . . . . c 1 c . . . . . . . . . . . . 
+. . . . . . . . . c 1 c . . . . . . . . . . . . 
+`</field></shadow></value></block></statement></block></statement></block></statement></block></statement></block></next></block></next></block></statement></block></statement></block></next></block></statement></block></xml>
